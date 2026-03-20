@@ -146,6 +146,11 @@ if uploaded_file is not None:
             if emoji_df.empty:
                 st.info("No emojis found.")
             else:
+                top_emoji_df = emoji_df.head().copy()
+                top_emoji_df['label'] = [f"Top {i + 1}" for i in range(len(top_emoji_df))]
                 fig, ax = plt.subplots()
-                ax.pie(emoji_df[1].head(), labels=emoji_df[0].head(), autopct="%0.2f")
+                # Use ASCII labels to avoid font glyph warnings for emoji symbols.
+                ax.pie(top_emoji_df[1], labels=top_emoji_df['label'], autopct="%0.2f%%", startangle=90)
+                ax.axis('equal')
                 st.pyplot(fig)
+                st.caption("Top emoji mapping is shown in the table on the left.")
