@@ -79,11 +79,14 @@ def most_common_words(selected_user, df):
     temp = df[df['user'] != 'group_notification']
     temp = temp[~temp['message'].apply(_is_media_message)]
 
+    def _is_emoji_token(token):
+        return any(emoji.is_emoji(ch) for ch in token)
+
     words = [
         word
         for message in temp['message']
         for word in message.lower().split()
-        if word not in stop_words
+        if word not in stop_words and not _is_emoji_token(word)
     ]
 
     return pd.DataFrame(Counter(words).most_common(20))
