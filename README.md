@@ -1,130 +1,196 @@
-# WhatsApp Chat Analyzer
+<div align="center">
 
-A Streamlit web app that analyzes exported WhatsApp chats and turns them into useful insights with charts, word clouds, emoji analysis, timelines, and activity maps.
+<img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white"/>
+<img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+<img src="https://img.shields.io/badge/Status-Live-25D366?style=for-the-badge"/>
 
-## Overview
+<br/><br/>
 
-This project helps you understand group or personal chat behavior from a WhatsApp export text file. It parses raw chat logs, cleans and structures the messages, and provides interactive analytics in a browser dashboard.
-
-The app supports:
-- 24-hour and 12-hour timestamp formats
-- Multiple common date formats from WhatsApp exports
-- Multi-line messages
-- Group notifications and user messages
-
-## Features
-
-- Overall and per-user analysis
-- Top statistics:
-	- Total messages
-	- Total words
-	- Media messages shared
-	- Links shared
-- Monthly and daily message timelines
-- Activity maps:
-	- Most active day
-	- Most active month
-	- Weekly heatmap (day vs time period)
-- Most busy users (for group chats)
-- Word cloud generation
-- Most common words list
-- Emoji frequency analysis with pie chart
-
-## Tech Stack
-
-- Python
-- Streamlit
-- Pandas
-- Matplotlib
-- Seaborn
-- WordCloud
-- URLExtract
-- Emoji
-
-## Project Structure
-
-- app.py: Streamlit UI and visualization logic
-- preprocessor.py: WhatsApp text parsing and dataframe preparation
-- helper.py: analytics functions and chart data builders
-- stop_hinglish.txt: stop words used for word filtering
-- requirements.txt: Python dependencies
-- Procfile, setup.sh: deployment helpers for PaaS platforms
-
-## How to Run Locally
-
-1. Clone the repository
-2. Create and activate a virtual environment
-3. Install dependencies
-4. Start the Streamlit app
-
-### Windows (PowerShell)
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-streamlit run app.py
+```
+ ██╗    ██╗██╗  ██╗ █████╗ ████████╗███████╗ █████╗ ██████╗ ██████╗
+ ██║    ██║██║  ██║██╔══██╗╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔══██╗
+ ██║ █╗ ██║███████║███████║   ██║   ███████╗███████║██████╔╝██████╔╝
+ ██║███╗██║██╔══██║██╔══██║   ██║   ╚════██║██╔══██║██╔═══╝ ██╔═══╝
+ ╚███╔███╔╝██║  ██║██║  ██║   ██║   ███████║██║  ██║██║     ██║
+  ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
 ```
 
-### macOS/Linux
+# 📊 WhatsApp Chat Analyzer
+
+### _Turn your chats into insights. Every message tells a story._
+
+<br/>
+
+[![Live Demo](https://img.shields.io/badge/🚀%20Try%20Live%20Demo-25D366?style=for-the-badge&logoColor=white)](https://whatsapp-chatstats.streamlit.app/)
+
+<br/>
+
+</div>
+
+---
+
+## ✨ What is this?
+
+Ever wondered **who texts the most** in your group? Which **day your friends go crazy** with memes? What **emojis define your chat culture**?
+
+**WhatsApp Chat Analyzer** takes your exported `.txt` chat file and transforms it into a beautiful, interactive dashboard — no coding needed, just upload and explore.
+
+> Supports both **personal** and **group** chats · Works with **Hinglish** stopwords · Handles **multiple date formats**
+
+---
+
+## 🎯 Features at a Glance
+
+| Feature | Description |
+|---|---|
+| 📈 **Message Timelines** | Monthly & daily activity charts |
+| 🗺️ **Activity Heatmap** | Busiest days and hours visualized |
+| ☁️ **Word Cloud** | Most used words beautifully rendered |
+| 😂 **Emoji Analysis** | Top emojis with pie chart breakdown |
+| 👥 **Per-User Stats** | Drill down into any individual's activity |
+| 🔗 **Link & Media Tracking** | Count of URLs and media messages shared |
+| 📅 **Busy Day/Month Maps** | Bar charts for peak activity periods |
+
+---
+
+## 🚀 Try it Live
+
+No setup needed. Just click, upload your chat file, and go:
+
+**👉 [whatsapp-chatstats.streamlit.app](https://whatsapp-chatstats.streamlit.app/)**
+
+---
+
+## 📱 How to Export Your WhatsApp Chat
+
+<table>
+<tr>
+<td width="50%">
+
+**On Android**
+1. Open the chat
+2. Tap ⋮ Menu → **More** → **Export chat**
+3. Select **Without Media**
+4. Save the `.txt` file
+
+</td>
+<td width="50%">
+
+**On iPhone**
+1. Open the chat
+2. Tap the name at the top → **Export Chat**
+3. Select **Without Media**
+4. Save the `.txt` file
+
+</td>
+</tr>
+</table>
+
+> 💡 **Tip:** Always choose "Without Media" — it gives cleaner data and a smaller file.
+
+---
+
+## 🖥️ Run Locally
 
 ```bash
-python3 -m venv .venv
+# 1. Clone the repo
+git clone https://github.com/tirth2404/whatsapp-chat-analyzer.git
+cd whatsapp-chat-analyzer
+
+# 2. Create virtual environment
+python -m venv .venv
+
+# 3. Activate it
+# Windows:
+.\.venv\Scripts\Activate.ps1
+# macOS/Linux:
 source .venv/bin/activate
+
+# 4. Install dependencies
 pip install -r requirements.txt
+
+# 5. Launch 🚀
 streamlit run app.py
 ```
 
-Then open the URL shown in terminal (usually http://localhost:8501).
+Open **http://localhost:8501** in your browser.
 
-## How to Export WhatsApp Chat Data
+---
 
-1. Open a chat in WhatsApp
-2. Tap Menu -> More -> Export chat
-3. Choose Without Media
-4. Save the exported .txt file
-5. Upload that file in the app sidebar
+## 🗂️ Project Structure
 
-Note: Using "Without Media" gives cleaner message analysis.
+```
+whatsapp-chat-analyzer/
+│
+├── app.py               → Streamlit UI & all visualizations
+├── preprocessor.py      → Parses raw WhatsApp .txt export into a DataFrame
+├── helper.py            → Analytics functions (stats, charts, word cloud)
+├── stop_hinglish.txt    → Hinglish stopwords for clean word analysis
+├── requirements.txt     → Python dependencies
+├── Procfile             → Deployment config
+└── setup.sh             → Server setup script
+```
 
-## Usage Flow
+---
 
-1. Upload WhatsApp exported text file
-2. Select user scope:
-	 - Overall
-	 - A specific participant
-3. Click Show Analysis
-4. Explore all charts and tables
+## 🛠️ Tech Stack
 
-## Deployment Notes
+<div>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white"/>
+<img src="https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white"/>
+<img src="https://img.shields.io/badge/Matplotlib-11557C?style=flat-square"/>
+<img src="https://img.shields.io/badge/Seaborn-4C72B0?style=flat-square"/>
+<img src="https://img.shields.io/badge/WordCloud-orange?style=flat-square"/>
+</div>
 
-This repo includes:
-- Procfile
-- setup.sh
+---
 
-These are useful for simple cloud deployment targets where Streamlit needs a runtime port from environment variables.
+## 🔧 Troubleshooting
 
-## Troubleshooting
+<details>
+<summary><b>❌ "Could not parse messages from this file"</b></summary>
 
-- Error: "Could not parse messages from this file"
-	- Re-export chat with date and time included
-	- Ensure you upload the .txt export file, not another format
+- Re-export the chat with **date and time included**
+- Make sure you're uploading a `.txt` file, not a zip or other format
+</details>
 
-- Empty word cloud or common words
-	- The selected user may have too little textual content
-	- Messages may mostly be media notifications
+<details>
+<summary><b>☁️ Empty word cloud or common words list</b></summary>
 
-- No emoji chart shown
-	- The selected chat/user may not contain emoji messages
+- The selected user may have too few text messages
+- Most messages might be media notifications (`<Media omitted>`)
+</details>
 
-## Future Improvements
+<details>
+<summary><b>😶 No emoji chart appearing</b></summary>
 
-- Add language-aware stopword presets
-- Sentiment analysis for messages
-- Downloadable analytics report (PDF/CSV)
-- Comparative analysis between users
-- Better handling for very large chat files
+- The selected chat or user simply may not contain any emoji messages
+</details>
 
-## License
+---
 
-This project is provided for educational and personal use.
+## 🔮 Roadmap
+
+- [ ] Sentiment analysis on messages
+- [ ] Downloadable PDF/CSV report
+- [ ] Language-aware stopword presets
+- [ ] Comparative analysis between multiple users
+- [ ] Better handling for very large chat files (10k+ messages)
+
+---
+
+## 📄 License
+
+This project is built for **educational and personal use**.
+
+---
+
+<div align="center">
+
+Made with 💚 by [tirth2404](https://github.com/tirth2404)
+
+⭐ **Star this repo if you found it useful!**
+
+</div>
